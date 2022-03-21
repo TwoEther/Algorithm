@@ -2,10 +2,11 @@ import heapq
 import sys
 
 input = sys.stdin.readline
-priority_queue = []
+
 test_case = int(input())
 
 for t in range(test_case):
+    priority_queue = []
     n = int(input())
     for i in range(n):
         o, number = map(str, input().split())

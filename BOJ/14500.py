@@ -1,18 +1,14 @@
-n = int(input())
-visited = [False for x in range(n+1)]
-array = [0 for x in range(n+1)]
+def findMaxValue(n, m, arr):
+    maxValue = 0
+    # -
+    for y in range(n):
+        for x in range(m-3):
+            k = sum(arr[y][x:x+3])
+            if maxValue <= k:
+                maxValue = k
+                
+    # ㅁ
+    for y in range(n-1):
+        for x in range(m-1):
+            k = sum(arr[y][x:x+2], sum)
 
-def bfs(cnt):
-    if cnt == n+1:
-        for i in range(1, n+1):
-            print(array[i], end=' ')
-        print()
-
-    else:
-        for i in range(1, n+1):
-            if not visited[i]:
-                visited[i] = True
-                array[cnt] = i
-                bfs(cnt+1)
-                visited[i] = False
-bfs(1)

@@ -11,7 +11,7 @@ for idx in range(t):
 numbers.sort()
 
 # 산술평균
-print('-------------')
+# print('-------------')
 print(f'{round(sum(numbers)/t)}')
 
 # 중앙값
@@ -22,20 +22,28 @@ print(f'{numbers[t//2]}')
 if t == 1:
     print(numbers[-1])
 else:
-    for idx in range(len(numbers)):
-        radix[numbers[idx]+4000] += 1
-        # print(f'radix[{numbers[idx]+4000}] =  {radix[numbers[idx]+4000]}')
+    add_value = min(numbers)
+    for i in range(len(numbers)):
+        numbers[i] -= add_value - 1
     
-    second = -4001
-    max_value = max(radix)
-    for i in range(len(radix)):
-        if second <= radix[i]:
-            second = radix[i]
+    max_number = max(numbers)
+    my_list = [0 for x in range(max_number)]
+    
+    for i in numbers:
+        my_list[i-1] += 1
+            
+    max_value = max(my_list)      # 비교를 위한 변수
+    num = 0
+    for i in range(len(my_list)):
+        if my_list[i] == max_value:     # 최빈값이 있다면
+            num += 1                    # 최빈값 카운트
         
-    if second == max_value:
-        print(max_value+4000)
+        if num == 2:                    # 만일 최빈값이 2개라면
+            print(i + add_value)        # 출력
+            break
     else:
-        print(second+4000)
+        print(my_list.index(max(my_list))+ add_value)
+    
 # 범위
 print(f'{max(numbers)-min(numbers)}')
 
