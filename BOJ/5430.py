@@ -1,4 +1,6 @@
+from audioop import reverse
 from collections import deque
+from ntpath import join
 
 n = int(input())
 j = True
@@ -7,23 +9,34 @@ j = True
 for i in range(n):
     process = deque([x for x in input()])
     l = int(input())
-    ex = [x for x in input()]
-    numbers = deque(ex[1::2])
+    s = input()[1:-1]
+    r = 0
+    
+    if not s:
+        print('error')
+        continue
+    
+    ex = deque(map(int, s.split(',')))
     for p in process:
-        print(p)
+        # print(p)
         if p == 'R':
-            numbers.reverse()
+            r += 1
         else:
-            if len(numbers) == 0:
+            if len(ex) == 0:
                 j = False
                 break
             else:
-                numbers.popleft()
+                if r % 2 == 0:
+                    ex.popleft()
+                else:
+                    ex.pop()
+                
+   
     if not j:
         print('error')
         j = True
     else:
-        print('[')
-        for i in range(len(numbers)-1):
-            print(str(i)+',', end='')
-        print(numbers[0])
+        if r % 2 == 1:
+            ex.reverse()
+        print("[" + ",".join(map(str,ex)) + "]")
+            
