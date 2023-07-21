@@ -7,4 +7,5 @@
 | ------ | -- |----------- |----------- |
 | 백준 | 3273 | 투포인터 알고리즘 |[블로그 정리 링크](https://98coding.tistory.com/29)|
 | 프로그래머스 | 타겟넘버 | DFS/BFS | [블로그 정리 링크](https://98coding.tistory.com/26)|
+| 프로그래머스 | 택배상자 | Stack | [블로그 정리 링크](https://98coding.tistory.com/25)|
 
